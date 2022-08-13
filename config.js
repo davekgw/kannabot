@@ -174,9 +174,9 @@ global.hsquere = ['⛶','❏','⫹⫺']
 
 /*============== STICKER WM ==============*/
 global.stickpack = '.'
-global.stickauth = `☂︎SmileyBotz⫹⫺ Whatsapp BOT\nwa.me/${global.nomorbot}`
+global.stickauth = `☂︎SmileyBotz\nwa.me/${global.nomorbot}`
 
-global.multiplier = 1290 // The higher, The harder levelup
+global.multiplier = 38 // The higher, The harder levelup
 
 /*============== EMOJI ==============*/
 global.rpg = {
