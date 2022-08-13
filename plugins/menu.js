@@ -26,9 +26,7 @@ const defaultMenu = {
 
 %m1 *T O D A Y*
 %m2 *%ucpn*
-%m2 *Days:* %week %weton
 %m2 *Date:* %date
-%m2 *Islamic Date:* %dateIslamic
 %m2 *Time:* %wib
 %m3
 
@@ -281,7 +279,7 @@ let tek = `*${ucapan()} ${conn.getName(m.sender)}*
 
 *S T A T U S  I N F O*
 • *ᴜᴘᴛɪᴍᴇ:* ${mpt}
-• *ᴛɪᴍᴇ:* ${moment.tz('Asia/Jakarta').format('HH')} H  ${moment.tz('Asia/Jakarta').format('mm')} M  ${moment.tz('Asia/Jakarta').format('ss')} S
+• *ᴛɪᴍᴇ:* ${moment.tz('Asia/Makassar').format('HH')} H  ${moment.tz('Asia/Makassar').format('mm')} M  ${moment.tz('Asia/Makassar').format('ss')} S
 • *ᴜsᴇʀs:* ${Object.keys(global.db.data.users).length}
 • *ʟɪᴍɪᴛ:* ${usrs.limit}
 • *ʟᴇᴠᴇʟ:* ${usrs.level}
@@ -503,12 +501,6 @@ const listMessage = {
             templateButtons: [
                 {
                     urlButton: {
-                        displayText: `${namebot}`,
-                        url: 'https://kannxapi.herokuapp.com/'
-                    }
-                },
-                {
-                    urlButton: {
                         displayText: 'Group Official',
                         url: sgc
                     }
@@ -523,12 +515,6 @@ const listMessage = {
                     quickReplyButton: {
                         displayText: 'Speed',
                         id: '.ping'
-                    }
-                },
-                {
-                    quickReplyButton: {
-                        displayText: 'Donasi',
-                        id: '.donasi'
                     }
                 },
             ]
