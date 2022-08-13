@@ -44,33 +44,33 @@ let wibh = moment.tz('Asia/Jakarta').format('HH')
 /*============== SOCIAL ==============*/
 
 // Wajib diisi ya kak!, kalo ga punya biarin aja, biar ada creditsnya :v
-global.sig = 'https://www.instagram.com/_alv.stn'
-global.sgh = 'https://github.com/KaiZax'
-global.sgc = 'https://chat.whatsapp.com/FmPgBh2lgqr3n1dv7aop8x'
+global.sig = 'https://www.instagram.com/davekgw'
+global.sgh = 'https://github.com/davekgw'
+global.sgc = 'https://chat.whatsapp.com/CUZny6ag4RNIz62t8GZpVy'
 global.sdc = " "
 global.snh = 'https://nhentai.net/g/365296/'
 
 /*============== PAYMENT ==============*/
-global.pdana = '087734910547'
-global.povo = '087734910547'
-global.pgopay = '087734910547'
-global.ppulsa = '085848453523'
-global.ppulsa2 = '087734910547'
+global.pdana = '089631008798'
+global.povo = 'Nope!'
+global.pgopay = 'Nope!'
+global.ppulsa = '089631008798'
+global.ppulsa2 = '089631008798'
 global.psaweria = '-'
 
 /*============== NOMOR ==============*/
-global.nomorbot = '62877349105471'
-global.nomorown = '6287734910547'
-global.namebot = 'нυ-тασ ʙᴏᴛ'
-global.nameown = 'ᴠɪɴᴢᴢ-ᴅᴇꜱᴜ'
+global.nomorbot = '6285156973145'
+global.nomorown = '6289631008798'
+global.namebot = 'SmileyBotz~'
+global.nameown = 'Dv💫'
 
 
 /*============== STAFF ==============*/
 global.owner = [
-  ['6287734910547'],
-  ['6287734910547'],
-  ['6285848453523'],
-  ['6287734910547', 'ᴠɪɴᴢᴢ-ᴅᴇꜱᴜ', true]
+  ['6289631008798'],
+  ['6289631008798'],
+  ['6289631008798'],
+  ['6289631008798', 'DveKgw', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
 global.mods = [] // Want some help?
@@ -115,9 +115,9 @@ global.APIKeys = { // APIKey Here
 // Kata APIKEY itu isi dengan apikey lu sendiri, dengan beli ke website itu
 
 /*============== WATERMARK ==============*/
-global.wm = '                「 ɦʊ-ȶǟօ ʙᴏᴛ あ⁩ 」' //Main Watermark
-global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘нυ-тασ - chαn˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
-global.wm3 = '⫹⫺ HuTao 𝗕𝗢𝗧'
+global.wm = '                 「Smiley~Botz」' //Main Watermark
+global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘Smiley ~ Bot˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
+global.wm3 = '⫹⫺ Smiley 𝗕𝗢𝗧'
 global.botdate = `⫹⫺ 𝗗𝗮𝘁𝗲: ${week} ${date}`
 global.bottime = `𝗧 𝗜 𝗠 𝗘 : ${wktuwib}`
 global.titlebot = '🌱 ┊ 𝗥𝗣𝗚 Whatsapp ʙᴏᴛ'
@@ -125,8 +125,8 @@ global.author = global.wm
 
 
 /*============== LOGO ==============*/
-global.thumb = 'https://telegra.ph/file/c5a9dd624ff269492f74a.jpg' //Main Thumbnail
-global.thumb2 = 'https://telegra.ph/file/c5a9dd624ff269492f74a.jpg'
+global.thumb = 'https://i.postimg.cc/15W0bTQB/1658610030817.jpg' //Main Thumbnail
+global.thumb2 = 'https://i.postimg.cc/15W0bTQB/1658610030817.jpg'
 global.thumbbc = 'https://telegra.ph/file/060fd404093891cac6a01.jpg' //For broadcast
 global.giflogo = 'https://telegra.ph/file/1639b32b22098a8f0ca45.mp4'
 
@@ -174,9 +174,9 @@ global.hsquere = ['⛶','❏','⫹⫺']
 
 /*============== STICKER WM ==============*/
 global.stickpack = '.'
-global.stickauth = `☂︎ɦʊ-ȶǟօ ʙᴏᴛ⫹⫺ Whatsapp BOT\nwa.me/${global.nomorbot}`
+global.stickauth = `☂︎SmileyBotz⫹⫺ Whatsapp BOT\nwa.me/${global.nomorbot}`
 
-global.multiplier = 38 // The higher, The harder levelup
+global.multiplier = 1290 // The higher, The harder levelup
 
 /*============== EMOJI ==============*/
 global.rpg = {
