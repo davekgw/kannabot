@@ -27,7 +27,7 @@ const defaultMenu = {
 %m1 *T O D A Y*
 %m2 *%ucpn*
 %m2 *Date:* %date
-%m2 *Time:* %wib
+%m2 *Time:* ${moment.tz('Asia/Makassar').format('HH')} : ${moment.tz('Asia/Makassar').format('mm')} : ${moment.tz('Asia/Makassar').format('ss')} 
 %m3
 
 %m1 *I N F O*
@@ -80,7 +80,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
   'audio': 'Audio',
   'maker': 'Maker',
   'database': 'Database',
-  'quran': 'Al Qur\'an',
   'owner': 'Owner',
   'host': 'Host',
   'advanced': 'Advanced',
@@ -227,7 +226,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
     },{
 	title: `${htki} MAIN ${htka}`,
 	rows: [
-	    {title: `⚡ ${pmenus} SPEED BOT`, rowId: ".ping", description: "Menampilkan kecepatan respon BOT"},
 	    {title: `💌 ${pmenus} OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner BOT"},
 	    {title: `📔 ${pmenus} SCRIPT BOT`, rowId: ".sc", description: `Source Code ${namebot}`},
 	]
@@ -252,7 +250,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
 	{title: `🔞 ${pmenus} Nsfw`, rowId: ".? nsfw", description: "Tch, dasar sagne"},
 	{title: `🌟 ${pmenus} Premium`, rowId: ".? premium", description: "Only premium Users"},
 	{title: `🎭 ${pmenus} Anonymous Chats`, rowId: ".? anonymous", description: "Bicara dengan orang tidak dikenal"},
-	{title: `📖 ${pmenus} Al-Quran`, rowId: ".? quran", description: "Tobat yuk kak"},
 	{title: `🌎 ${pmenus} Internet`, rowId: ".? internet", description: "Cari sesuatu diBOT"},
 	{title: `📩 ${pmenus} Downloaders`, rowId: ".? downloader", description: "Download sesuatu diBOT"},
 	{title: `🎨 ${pmenus} Stikers`, rowId: ".? stiker", description: "Buat Sticker diBOT"},
@@ -511,12 +508,6 @@ const listMessage = {
                         id: '.owner'
                     }
                 },
-                {
-                    quickReplyButton: {
-                        displayText: 'Speed',
-                        id: '.ping'
-                    }
-                },
             ]
         }
         //await conn.sendMessage(m.chat, message, m, { mentionedJid: [m.sender] })
@@ -563,7 +554,7 @@ function clockStringP(ms) {
   return [ye, ' *Years 🗓️*\n',  mo, ' *Month 🌙*\n', d, ' *Days ☀️*\n', h, ' *Hours 🕐*\n', m, ' *Minute ⏰*\n', s, ' *Second ⏱️*'].map(v => v.toString().padStart(2, 0)).join('')
 }
 function ucapan() {
-  const time = moment.tz('Asia/Jakarta').format('HH')
+  const time = moment.tz('Asia/Makassar').format('HH')
   let res = "Selamat DiniHari ☀️"
   if (time >= 4) {
     res = "Good Morning 🌄"
