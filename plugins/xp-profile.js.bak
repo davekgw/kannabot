@@ -27,7 +27,7 @@ ${clockString(user.premiumTime)}
 }
 handler.help = ['profile [@user]']
 handler.tags = ['exp']
-handler.command = /^profile$/i
+handler.command = /^profile|pp$/i
 export default handler
 
 const more = String.fromCharCode(8206)

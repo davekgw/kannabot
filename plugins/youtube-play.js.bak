@@ -30,6 +30,3 @@ handler.limit = false
 handler.register = true
 
 export default handler
-
-
-//Di gw ini gabisa, Kalau di kalian ga tau bisa apa nggk, Kayanya bisa:v
