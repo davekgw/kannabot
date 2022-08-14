@@ -85,7 +85,8 @@ global.loadDatabase = async function loadDatabase() {
 }
 loadDatabase()
 
-global.authFile = `${opts._[0] || 'session'}.data.json`
+global.authFile = `${opts._[0] || 'kannabot'}.data.json`
+console.log(`Load AuthFile from ${authFile}`)
 const { state, saveState } = useSingleFileAuthState(global.authFile)
 
 const connectionOptions = {
@@ -128,7 +129,9 @@ async function connectionUpdate(update) {
     console.log(await global.reloadHandler(true).catch(console.error))
     global.timestamp.connect = new Date
   }
-  if (global.db.data == null) loadDatabase()
+  if (global.db.data == null) await loadDatabase()
+  console.log(JSON.stringify(update, null, 4))
+  if (update.receivedPendingNotifications) conn.sendMessage(`6285334930628@s.whatsapp.net`, {text: 'Successfully connected by Kanna BOT' }) //made by Gama Naufal 
 }
 
 
@@ -160,8 +163,8 @@ global.reloadHandler = async function (restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate)
   }
 
-  conn.welcome = '✧━━━━━━[ *WELCOME* ]━━━━━━✧\n\n┏––––––━━━━━━━━•\n│⫹⫺ @subject\n┣━━━━━━━━┅┅┅\n│( 👋 Hallo @user)\n├[ *INTRO* ]—\n│ *Nama:* \n│ *Umur:* \n│ *Gender:*\n┗––––––━━┅┅┅\n\n––––––┅┅ *DESCRIPTION* ┅┅––––––\n@desc'
-  conn.bye = '✧━━━━━━[ *GOOD BYE* ]━━━━━━✧\nSayonara *@user* 👋( ╹▽╹ )'
+  conn.welcome = '✦━━━━━━[ *WELCOME* ]━━━━━━✦\n\n┏––––––━━━━━━━━•\n│⫹⫺ @subject\n┣━━━━━━━━┅┅┅\n│( 👋 Hallo @user)\n├[ *INTRO* ]—\n│ *Nama:* \n│ *Umur:* \n│ *Gender:*\n┗––––––━━┅┅┅\n\n––––––┅┅ *DESCRIPTION* ┅┅––––––\n@desc'
+  conn.bye = '✦━━━━━━[ *GOOD BYE* ]━━━━━━✦\nSayonara *@user* 👋( ╹▽╹ )'
   conn.spromote = '@user sekarang admin!'
   conn.sdemote = '@user sekarang bukan admin!'
   conn.sDesc = 'Deskripsi telah diubah ke \n@desc'
