@@ -1,4 +1,4 @@
-console.log('🐾 Starting...')
+console.log('🕖 Starting...')
 
 import { join, dirname } from 'path'
 import { createRequire } from "module";
@@ -16,12 +16,12 @@ const { name, author } = require(join(__dirname, './package.json')) // https://w
 const { say } = cfonts
 const rl = createInterface(process.stdin, process.stdout)
 
-say('KANNABOT\nMD', {
+say('SMILEYBOT\nDv', {
   font: 'block',
   align: 'center',
   colors: ['blue']
 })
-say(`🐾 RPG BOT Multi-Device Whatsapp By @${global.nameown}`, {
+say(`🌸 SmileyBotz By @${global.nameown}`, {
   font: 'console',
   align: 'center',
   colors: ['green']

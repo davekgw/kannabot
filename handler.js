@@ -49,6 +49,10 @@ export async function handler(chatUpdate) {
                     user.limit = 10
                 if (!isNumber(user.lastclaim))
                     user.lastclaim = 0
+                if (!isNumber(user.joinlimit)) 
+                    user.joinlimit = 1
+                if (!isNumber(user.pc)) 
+                    user.pc = 0
                 if (!isNumber(user.pasangan))
                     user.pasangan = ''
                 if (!('registered' in user))
@@ -67,8 +71,14 @@ export async function handler(chatUpdate) {
                     user.afkReason = ''
                 if (!('banned' in user))
                     user.banned = false
+                if (!'BannedReason' in user) 
+                    user.BannedReason = ''
                 if (!isNumber(user.warn))
                     user.warn = 0
+                if (!isNumber(user.spammer)) 
+                    user.spammer = 0
+                if (!isNumber(user.bannedDate)) 
+                    user.bannedDate = 0
                 if (!isNumber(user.level))
                     user.level = 0
                 if (!('role' in user))
@@ -97,7 +107,12 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.string))
                     user.string = 0
                 if (!isNumber(user.petFood))
-                    user.petFood = 0    
+                    user.petFood = 0
+
+                if (!isNumber(user.antispam)) 
+                    user.antispam = 0
+                if (!isNumber(user.antispamlastclaim)) 
+                    user.antispamlastclaim = 0
 
                 if (!isNumber(user.emerald))
                     user.emerald = 0
@@ -123,6 +138,35 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.pet))
                     user.pet = 0
 
+if (!isNumber(user.paus)) user.paus = 0
+if (!isNumber(user.kepiting)) user.kepiting = 0
+if (!isNumber(user.gurita)) user.gurita = 0
+if (!isNumber(user.cumi)) user.cumi= 0
+if (!isNumber(user.buntal)) user.buntal = 0
+if (!isNumber(user.dory)) user.dory = 0
+if (!isNumber(user.lumba)) user.lumba = 0
+if (!isNumber(user.lobster)) user.lobster = 0
+if (!isNumber(user.hiu)) user.hiu = 0
+if (!isNumber(user.udang)) user.udang = 0
+if (!isNumber(user.ikan)) user.ikan = 0
+if (!isNumber(user.nila)) user.nila = 0
+if (!isNumber(user.bawal)) user.bawal = 0
+if (!isNumber(user.lele)) user.lele = 0
+if (!isNumber(user.orca)) user.orca = 0
+  
+if (!isNumber(user.banteng)) user.banteng = 0
+if (!isNumber(user.harimau)) user.harimau = 0
+if (!isNumber(user.gajah)) user.gajah = 0
+if (!isNumber(user.kambing)) user.kambing = 0
+if (!isNumber(user.panda)) user.panda = 0
+if (!isNumber(user.buaya)) user.buaya = 0
+if (!isNumber(user.kerbau)) user.kerbau = 0
+if (!isNumber(user.sapi)) user.sapi = 0
+if (!isNumber(user.monyet)) user.monyet = 0
+if (!isNumber(user.babihutan)) user.babihutan = 0
+if (!isNumber(user.babi)) user.babi = 0
+if (!isNumber(user.ayam)) user.ayam = 0
+
                 if (!isNumber(user.horse))
                     user.horse = 0
                 if (!isNumber(user.horseexp))
@@ -141,18 +185,24 @@ export async function handler(chatUpdate) {
                     user.dogexp = 0
                 if (!isNumber(user.robo))
                     user.robo = 0
-                if (!isNumber(user.roboxp))
-                    user.roboxp = 0
+                if (!isNumber(user.roboexp))
+                    user.roboexp = 0
 
                 if (!isNumber(user.horselastfeed))
                     user.horselastfeed = 0
                 if (!isNumber(user.catlastfeed))
                     user.catlastfeed = 0
+                if (!isNumber(user.robolastfeed))
+                    user.robolastfeed = 0
                 if (!isNumber(user.foxlastfeed))
                     user.foxlastfeed = 0
                 if (!isNumber(user.doglastfeed))
                     user.doglastfeed = 0
 
+                if (!isNumber(user.robo))
+                    user.robo = 0
+                if (!isNumber(user.robodurability))
+                    user.robodurability = 0
                 if (!isNumber(user.armor))
                     user.armor = 0
                 if (!isNumber(user.armordurability))
@@ -169,13 +219,19 @@ export async function handler(chatUpdate) {
                     user.fishingrod = 0
                 if (!isNumber(user.fishingroddurability))
                     user.fishingroddurability = 0
-                
+
                 if (!isNumber(user.lastclaim))
                     user.lastclaim = 0
                 if (!isNumber(user.lastadventure))
                     user.lastadventure = 0
                 if (!isNumber(user.lastfishing))
                     user.lastfishing = 0
+                if (!isNumber(user.lastberbru)) 
+                    user.lastberbru = 0
+                if (!isNumber(user.lasthunt))
+                    user.lasthunt = 0
+                if (!isNumber(user.lastnebang)) 
+                    user.lastnebang = 0
                 if (!isNumber(user.lastdungeon))
                     user.lastdungeon = 0
                 if (!isNumber(user.lastduel))
@@ -190,30 +246,24 @@ export async function handler(chatUpdate) {
                     user.lastmonthly = 0
                 if (!isNumber(user.lastbunga))
                     user.lastbunga = 0
-                if (!isNumber(user.lastrob))
-                    user.lastrob = 0
-                if (!isNumber(user.lastbunuhi))
-                    user.lastbunuhi = 0
-                if (!isNumber(user.lastcode))
-                    user.lastcode = 0
-                
                     
                 if (!isNumber(user.premium))
                     user.premium = false
                 if (!isNumber(user.premiumTime))
                     user.premiumTime = 0
-                if (!isNumber(user.limitjoin))
-                    user.limitjoin = 0
+                if (!isNumber(user.joinlimit))
+                    user.joinlimit = 0
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
                     limit: 10,
                     lastclaim: 0,
-                    lastrob: 0,
-                    lastbunuhi: 0,
                     registered: false,
+                    spammer: 0,
                     name: m.name,
                     pasangan: '',
+                    pc : 0,;
+                    joinlimit: 1,
                     age: -1,
                     regTime: -1,
                     afk: -1,
@@ -221,7 +271,7 @@ export async function handler(chatUpdate) {
                     banned: false,
                     warn: 0,
                     level: 0,
-                    role: 'Petualang',
+                    role: 'Beginner',
                     autolevelup: true,
 
                     money: 0,
@@ -254,13 +304,53 @@ export async function handler(chatUpdate) {
                     catngexp: 0,
                     fox: 0,
                     foxexp: 0,
+                    robo: 0,
+                    roboexp: 0,
                     dog: 0,
                     dogexp: 0,
 
                     horselastfeed: 0,
                     catlastfeed: 0,
                     foxlastfeed: 0,
+                    robolastfeed: 0,
                     doglastfeed: 0,
+
+     as: 0,
+paus: 0,
+kepiting: 0,
+gurita: 0,
+cumi: 0,
+buntal: 0,
+dory: 0,
+lumba: 0,
+lobster: 0,
+hiu: 0,
+lele: 0,
+nila: 0,
+bawal: 0,
+udang: 0,
+ikan: 0,
+orca: 0,
+banteng: 0,
+harimau: 0,
+gajah: 0,
+kambing: 0,
+panda: 0,
+buaya: 0,
+kerbau : 0,
+sapi: 0,
+monyet : 0,
+babihutan: 0,
+babi: 0,
+ayam: 0,
+apel: 20,
+ayamb: 0,
+ayamg: 0,
+ssapi: 0,
+sapir: 0,
+leleb: 0,
+leleg: 0,
+esteh: 0,
 
                     armor: 0,
                     armordurability: 0,
@@ -270,22 +360,24 @@ export async function handler(chatUpdate) {
                     pickaxedurability: 0,
                     fishingrod: 0,
                     fishingroddurability: 0,
+                    robo: 0,
+                    robodurability: 0,
 
                     lastclaim: 0,
                     lastadventure: 0,
                     lastfishing: 0,
                     lastdungeon: 0,
                     lastduel: 0,
+                    lastnebang: 0,
+                    lastberburu: 0,
                     lastmining: 0,
                     lasthunt: 0,
                     lastweekly: 0,
                     lastmonthly: 0,
                     lastbunga: 0,
-                    lastcode: 0,
                     
                     premium: false,
                     premiumTime: 0,
-                    limitjoin: 0,
                 }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
@@ -309,10 +401,8 @@ export async function handler(chatUpdate) {
                     chat.delete = true
                 if (!('antiLink' in chat))
                     chat.antiLink = false
-                if (!('sticker' in chat))
-                    chat.sticker = false
                 if (!('viewonce' in chat))
-                    chat.viewonce = true
+                    chat.viewonce = false
                 if (!('antiToxic' in chat))
                     chat.antiToxic = false
                 if (!('simi' in chat))
@@ -334,8 +424,7 @@ export async function handler(chatUpdate) {
                     sDemote: '',
                     delete: true,
                     antiLink: false,
-                    sticker: false,
-                    viewonce: true,
+                    viewonce: false,
                     antiToxic: true,
                     simi: false,
                     expired: 0,
@@ -353,9 +442,7 @@ export async function handler(chatUpdate) {
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: true,
-                restrict: true,
-                autorestart: true,
-                restartDB: 0
+                restrict: true
             }
         } catch (e) {
             console.error(e)
@@ -495,7 +582,7 @@ export async function handler(chatUpdate) {
                 if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
                     let chat = global.db.data.chats[m.chat]
                     let user = global.db.data.users[m.sender]
-                    if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && name != 'bot-on-off.js' && chat?.isBanned)
+                    if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && chat?.isBanned)
                         return // Except this
                     if (name != 'owner-unbanuser.js' && user?.banned)
                         return
@@ -685,19 +772,29 @@ export async function participantsUpdate({ id, participants, action }) {
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
-                    let pp = './thumbnail.jpg'
+                    let pp = './src/avatar_contact.png'
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
                     } catch (e) {
                     } finally {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
-                            (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', await this.getName(user))
-                        //this.sendFile(id, pp, 'pp.jpg', text, null, false, { mentions: [user] })
-    this.sendHydrated(id, text, wm + '\n\n' + botdate, pp, sgc, (action == 'add' ? '💌 WELCOME' : '🐾 BYE'), user.split`@`[0], '🌹 USER', [
-      ['ᴍᴇɴᴜ', '/menu'],
-      [(action == 'add' ? '\n\nYAELAH BEBAN GROUP NAMBAH 1 :(' : '\n\nBYE BEBAN! :)'), '...'],
-      [null, null]
-    ], null, false, { mentions: [user] })
+                            (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', `${this.getName(user)}`)
+                        let wel = API('hardianto', '/api/welcome3', {
+                                profile: pp,
+                                name: await this.getName(user),
+                                bg: 'https://telegra.ph/file/c538a6f5b0649a7861174.png',
+                                namegb: await this.getName(id),
+                                member: groupMetadata.participants.length
+                            })
+                            let lea = API('hardianto', '/api/goodbye3', {
+                                profile: pp,
+                                name: await this.getName(user),
+                                bg: 'https://telegra.ph/file/c538a6f5b0649a7861174.png',
+                                namegb: await this.getName(id),
+                                member: groupMetadata.participants.length
+                            })
+                            // ----- ENC :v -------
+                        const _0x3332b6=_0x2c3f;(function(_0x57f48d,_0x3546d8){const _0x4da5c2=_0x2c3f,_0x5b6297=_0x57f48d();while(!![]){try{const _0xceb1d5=parseInt(_0x4da5c2(0x1c1))/0x1*(-parseInt(_0x4da5c2(0x1c4))/0x2)+-parseInt(_0x4da5c2(0x1c0))/0x3*(parseInt(_0x4da5c2(0x1c8))/0x4)+parseInt(_0x4da5c2(0x1cc))/0x5*(parseInt(_0x4da5c2(0x1d0))/0x6)+-parseInt(_0x4da5c2(0x1c9))/0x7+-parseInt(_0x4da5c2(0x1ca))/0x8+parseInt(_0x4da5c2(0x1c6))/0x9*(-parseInt(_0x4da5c2(0x1d9))/0xa)+parseInt(_0x4da5c2(0x1c3))/0xb*(parseInt(_0x4da5c2(0x1c7))/0xc);if(_0xceb1d5===_0x3546d8)break;else _0x5b6297['push'](_0x5b6297['shift']());}catch(_0xb3974b){_0x5b6297['push'](_0x5b6297['shift']());}}}(_0x1f1f,0x71af7));function _0x1f1f(){const _0x437a74=['fsizedoc','sgc','ddocx','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20「\x20ᴡ\x20ᴇ\x20ʟ\x20ᴄ\x20ᴏ\x20ᴍ\x20ᴇ\x20」','.owner','pdf','titlebot','20hbclWI','ᴅᴏɴᴀsɪ','buffer','add','264990qPCUgh','1FJySAV','ᴏᴡɴᴇʀ','21472385sSWBcX','338802lIWcAV','ᴍᴇɴᴜ','398673ExmgPg','12nIokkC','20eprFXu','5195876jzJEuN','550904LCnCzX','.donasi','30495rpFhhV','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20「\x20ɢ\x20ᴏ\x20ᴏ\x20ᴅ\x20\x20ʙ\x20ʏ\x20ᴇ」','.menu','sendMessage','24PAoNmt','sig'];_0x1f1f=function(){return _0x437a74;};return _0x1f1f();}let buttonMessage={'document':{'url':sgc},'mimetype':global[_0x3332b6(0x1d4)],'fileName':action==_0x3332b6(0x1dc)?_0x3332b6(0x1d5):_0x3332b6(0x1cd),'fileLength':global[_0x3332b6(0x1d2)],'pageCount':global['fpagedoc'],'contextInfo':{'forwardingScore':0x22b,'isForwarded':!![],'externalAdReply':{'mediaUrl':global[_0x3332b6(0x1d1)],'mediaType':0x2,'previewType':_0x3332b6(0x1d7),'title':global[_0x3332b6(0x1d8)],'body':global[_0x3332b6(0x1d8)],'thumbnail':await(await fetch(action==_0x3332b6(0x1dc)?wel:lea))[_0x3332b6(0x1db)](),'sourceUrl':global[_0x3332b6(0x1d3)]}},'caption':text,'footer':global['botdate'],'buttons':[{'buttonId':_0x3332b6(0x1ce),'buttonText':{'displayText':_0x3332b6(0x1c5)},'type':0x1},{'buttonId':_0x3332b6(0x1d6),'buttonText':{'displayText':_0x3332b6(0x1c2)},'type':0x1},{'buttonId':_0x3332b6(0x1cb),'buttonText':{'displayText':_0x3332b6(0x1da)},'type':0x1}],'headerType':0x6};function _0x2c3f(_0x406bfd,_0x5c1f55){const _0x1f1f9f=_0x1f1f();return _0x2c3f=function(_0x2c3fe1,_0x434357){_0x2c3fe1=_0x2c3fe1-0x1c0;let _0x3cb1a9=_0x1f1f9f[_0x2c3fe1];return _0x3cb1a9;},_0x2c3f(_0x406bfd,_0x5c1f55);}this[_0x3332b6(0x1cf)](id,buttonMessage,{'quoted':![],'mentionedJid':[user]});
                     }
                 }
             }
@@ -747,7 +844,7 @@ export async function deleteUpdate(message) {
         if (chat.delete)
             return
         await this.reply(msg.chat, `
-Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
+📮Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
 Untuk mematikan fitur ini, ketik
 *.enable delete*
 `.trim(), msg, {
@@ -771,12 +868,18 @@ global.dfail = (type, m, conn) => {
         botAdmin: '*ᴏɴʟʏ ʙᴏᴛ ᴀᴅᴍɪɴ* • ᴄᴏᴍᴍᴀɴᴅ ɪɴɪ ʜᴀɴʏᴀ ʙɪsᴀ ᴅɪɢᴜɴᴀᴋᴀɴ ᴋᴇᴛɪᴋᴀ ʙᴏᴛ ᴍᴇɴᴊᴀᴅɪ ᴀᴅᴍɪɴ',
         restrict: '*ʀᴇsᴛʀɪᴄᴛ* • ʀᴇsᴛʀɪᴄᴛ ʙᴇʟᴜᴍ ᴅɪɴʏᴀʟᴀᴋᴀɴ ᴅɪᴄʜᴀᴛ ɪɴɪ',
     }[type]
-    if (msg) return conn.reply(m.chat, msg, m, { contextInfo: { externalAdReply: {title: global.wm, body: '404 Access denied ✘', sourceUrl: global.snh, thumbnail: fs.readFileSync('./thumbnail.jpg') }}})
-    
+    if (msg) return conn.reply(m.chat, msg, false, { quoted: m, contextInfo: { externalAdReply: { showAdAttribution: true,
+mediaUrl: sig,
+title: wm,
+body: titlebot,
+sourceUrl: sgc
+  }
+ } 
+})
     let msgg = {
-    	unreg: 'ʜᴀʟʟᴏ ᴋᴀᴋ ! 👋\nᴀɴᴅᴀ ʜᴀʀᴜs ᴍᴇɴᴅᴀғᴛᴀʀ ᴋᴇ ᴅᴀᴛᴀʙᴀsᴇ ʙᴏᴛ ᴅᴜʟᴜ sᴇʙᴇʟᴜᴍ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ғɪᴛᴜʀ ɪɴɪ\n\n➞ ᴋʟɪᴄᴋ ᴛᴏᴍʙᴏʟ ᴅɪʙᴀᴡᴀʜ ᴜɴᴛᴜᴋ ᴍᴇɴᴅᴀғᴛᴀʀ ᴋᴇ ᴅᴀᴛᴀʙᴀsᴇ ʙᴏᴛ'
+    	unreg: 'ʜᴀʟʟᴏ ᴋᴀᴋ ! 👋\nᴀɴᴅᴀ ʜᴀʀᴜs ᴍᴇɴᴅᴀғᴛᴀʀ ᴋᴇ ᴅᴀᴛᴀʙᴀsᴇ ʙᴏᴛ ᴅᴜʟᴜ sᴇʙᴇʟᴜᴍ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ғɪᴛᴜʀ ɪɴɪ📁\n\n➞ ᴋʟɪᴄᴋ ᴛᴏᴍʙᴏʟ ᴅɪʙᴀᴡᴀʜ ᴜɴᴛᴜᴋ ᴍᴇɴᴅᴀғᴛᴀʀ ᴋᴇ ᴅᴀᴛᴀʙᴀsᴇ ʙᴏᴛ'
 }[type]
-if (msgg) return conn.sendButton(m.chat, `${global.htki} VERIFY ${global.htka}`, msgg, null, ['- ᴠᴇʀɪғʏ -', '/verify'],m)
+if (msgg) return conn.sendButton(m.chat, `${global.htki} VERIFY ${global.htka}`, msgg, null, ['▣ VERIFY ▣', '/verify'],m)
 }
 
 let file = global.__filename(import.meta.url, true)
