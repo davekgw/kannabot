@@ -8,12 +8,13 @@ let handler = async (m, { conn, args }) => {
 	if (!args[0]) throw 'Input URL' 
 	GDriveDl(args[0]).then(async (res) => {
 		if (!res) throw res
-		await m.reply('_In progress, please wait..._')
+		await m.reply(JSON.stringify(res, null, 2))
 		conn.sendMessage(m.chat, { document: { url: res.downloadUrl }, fileName: res.fileName, mimetype: res.mimetype }, { quoted: m })
 	})
 }
 handler.command = /^(gdrive)$/i
 handler.disabled = false
+handler.limit = true
 
 export default handler
 

@@ -7,6 +7,7 @@ let handler = async (m, { conn, usedprefix }) => {
 
 handler.help = ['lolice']
 handler.tags = ['maker']
+handler.limit = true
 
 handler.command = /^(lolice)$/i
 

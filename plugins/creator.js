@@ -15,27 +15,41 @@ let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
 • Owner berhak blockir tanpa alasan
 • Berbicaralah yang sopan & tidak spam
 • Owner Hanya merespon yang berkaitan dengan BOT
-• No Telp`
+• No Telp
+• Chat gajelas = Block`
 
 //------------ BIO
 let ppown = await conn.profilePictureUrl(nomorown + '@s.whatsapp.net', 'image').catch(_ => hwaifu[1]) 
 let teksbio = `${htki} *BIODATA* ${htka}
-*ɴᴀᴍᴇ:* 𝗗𝗮𝘃𝗲𝗞𝗴𝘄™
-*ᴀɢᴇ:* 𝟭𝟵ᵗʰ
-*sᴛᴀᴛᴜs:* single cok:(
-
-*ʙɪʀᴛʜᴅᴀʏ:* 01 desember 2022
-*ᴀᴅᴅʀᴇss:* Indonesia, Sulawesi Utara, Airmadidi
+*💌 Nama* : Dv
+*✉️ Nama RL* : DaveKgw
+*♂️ Gender* : Laki - laki
+*🕋 Agama* : Kristen Advent
+*⏰ Tanggal lahir* : 01 desember 2002
+*🎨 Umur* : 19
+*🧮 Kelas* : Udh Tamat
+*🧩 Hobby* : Main game, Recode script
+*💬 Sifat* : Baik, hode, menyukai kebebasan, tydack ramah, 
+*🗺️ Tinggal* : Indonesia, Sulawesi Utara, Airmadidi
+*❤️ Suka* : warnah pink & hitam, abu², waifu wangy:v, kucing
+*💔 Benci* : anak alay, autis, anak epep, sok asik, bucin alay
 
 *- - sᴋɪʟʟs: - -* 
-> JavaScript [89.7%]
-> Python [13.4%]
-> CSS [5.1%]
-> Html [1.2%]
+> JavaScript [80.7%]
+> Python [40.4%]
+> CSS [0.1%]
+> Html [67.9%]
+> Recode [90.8%]
+> Create Webs [3.9%]
+
+───────[ SOSIAL MEDIA ]───────
 
 📷 *Instagram:* ${sig}
 🐈 *Github:* ${sgh}
 🥏 *Whatsapp* wa.me/${nomorown}
+🌐 *Discord:* Soon
+🌏 *Website:* https://github.com/devkgw
+🎶 *Tiktok:* tiktok.com/@davekgw
 
 `
   let teks = ' '
@@ -45,12 +59,13 @@ const sections = [
 	rows: [
 	    {title: "📱 • Nomor", rowId: ".owner nomor"},
 	{title: "🎨 • Biodata", rowId: ".owner bio"},
+	{title: "🌐 • Website", rowId: ".website"},
 	{title: "🌎 • Script", rowId: ".sc"},
 	]
     },{
 	title: `${htjava} SUPPORT ME –––––––·•`,
 	rows: [
-	    {title: "💹 • Donasi", rowId: ".owner nomor"},
+	    {title: "💹 • Donasi", rowId: ".donasi"},
 	{title: "🔖 • Sewa", rowId: ".sewa"},
 	{title: "🌟 • Buy Premium", rowId: ".premium"},
 	]
@@ -61,7 +76,7 @@ const listMessage = {
   text: teks,
   footer: null,
   title: `${htki} *OWNER* ${htka}`,
-  buttonText: "Click Here !",
+  buttonText: "☞ Click Here !",
   sections
 }
 
@@ -73,7 +88,7 @@ const listMessage = {
           conn.reply(m.chat, teksnomor, m, { contextInfo: { mentionedJid: [nowner] }})
             break
             case 'bio':
-          conn.sendHydrated(m.chat, teksbio, wm, ppown, "wa.me/" + nomorown, "💬 ᴄʜᴀᴛs", null,null, [["ᴅᴏɴᴀsɪ", '.donasi'], [null, null],[null,null]], m)
+          conn.sendHydrated(m.chat, teksbio, wm, ppown, "https://wa.me/" + nomorown, "💬 ᴄʜᴀᴛs", null,null, [["ᴅᴏɴᴀsɪ", '.donasi'], [null, null],[null,null]], m)
             break
             
           default:

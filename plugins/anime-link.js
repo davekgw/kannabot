@@ -1,8 +1,4 @@
-import fs from 'fs'
-import fetch from 'node-fetch'
-
-let handler = async(m, { conn, text, usedPrefix: _p }) => {
-let list = `
+let handler = async m => m.reply(`
 ┏━━━━━━━━━━━━━━━━━━━━┅
 ┇       *「 Anime 」*
 ┣━━━━━━━━━━━━━━━━━━━━┅
@@ -49,21 +45,11 @@ let list = `
 ┃ ❖ https://haruzorasubs.net
 ┃ ❖ https://myanimelist.net
 ┗━━━━━━━━━━━━━━━━━━━━┅
-`.trim()// Tambah sendiri kalo mau
-await conn.reply(m.chat, list, 0, {
-    contextInfo: { mentionedJid: [m.sender],
-    externalAdReply :{
-    mediaUrl: '',
-    mediaType: 2,
-    title: global.wm, 
-    body: 'Ini Aku Saranin Kak',  
-    sourceUrl: snh, 
-    thumbnail: fs.readFileSync('./thumbnail.jpg')
-      }}
-     })
-}    
+`.trim()) // Tambah sendiri kalo mau
 handler.help = ['animelink']
 handler.tags = ['anime']
 handler.command = /^animelink$/i
+handler.register = true
+handler.private = true
 
 export default handler 

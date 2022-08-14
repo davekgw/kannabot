@@ -24,7 +24,18 @@ handler.before = async function (m) {
         if (user.pickaxe == 0) {
         	user.pickaxedurability = 0
         }
-        
+
+//robo
+    if (user.robo > 0) {
+    	if (user.robodurability < 1) {
+            user.robodurability = 30
+            user.robo -= 1
+            }
+        }
+        if (user.robo == 0) {
+        	user.robodurability = 0
+        }
+                        
 //armor
     if (user.armor > 0) {
    	if (user.armordurability < 1) {
