@@ -26,16 +26,15 @@ const defaultMenu = {
 
 %m1 *T O D A Y*
 %m2 *%ucpn*
+%m2 *Days:* %week %weton
 %m2 *Date:* %date
-%m2 *Time:* ${moment.tz('Asia/Makassar').format('HH')} : ${moment.tz('Asia/Makassar').format('mm')} : ${moment.tz('Asia/Makassar').format('ss')} 
+%m2 *Time:* %wib
 %m3
 
 %m1 *I N F O*
 %m2 *Bot Name:* %me
 %m2 *Mode:* %mode
 %m2 *Platform:* %platform
-%m2 *Type:* Node.Js
-%m2 *Baileys:* Multi Device
 %m2 *Prefix:* [ *%_p* ]
 %m2 *Uptime:* %muptime
 %m2 *Database:* %rtotalreg dari %totalreg
@@ -158,10 +157,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
   if (teks == 'absen') tags = {
     'absen': 'Absen'
   }
-  if (teks == 'quran') tags = {
-    'quran': 'Al-Qur\'an',
-    'islamic': 'Islamic'
-  }
   if (teks == 'audio') tags = {
     'audio': 'Audio'
   }
@@ -179,9 +174,12 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
  if (teks == 'nsfw') tags = {
     'nsfw': 'Nsfw'
   }
-  if (teks == 'nocategory') tags = {
-    '': 'No Category'
-  }
+  if (teks == 'quotes') tags = {
+    'quotes': 'Quotes'
+ }
+  if (teks == 'maker') tags = {
+    'maker': 'Maker'
+}
   try {
   	// DEFAULT MENU
       let dash = global.dashmenu
@@ -213,83 +211,88 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
     let mpt = clockString(_mpt)
       const sections = [
    {
-    title: `${htki} RULES ${htka}`,
-	rows: [
-	    {title: `🚦 ${pmenus} PLEASE READ THIS RULES
-
-® ${pmenus} DILARANG SPAM BOT | *JIKA BELUM BERDONASI*
-® ${pmenus} GUNAKAN BOT SEBAIK MUNGKIN | *PASTI FAHAMLAH*
-® ${pmenus} OWNER ADALAH DEWA`, rowId: ".donasi", description: `${namebot}`},
-	    //{title: ` ${pmenus} GUNAKAN BOT SEBAIK MUNGKIN`, description: "Pasti Fahamlah"},
-	    //{title: `🚥 ${pmenus} OWNER ADALAH DEWA`, description: `${namebot}`},
-	]
-    },{
 	title: `${htki} MAIN ${htka}`,
 	rows: [
-	    {title: `💌 ${pmenus} OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner BOT"},
+	    {title: `📛 ${pmenus} INFO BOT`, rowId: ".info", description: "Menampilkan info SmileyBotz"},
+	    {title: `💌 ${pmenus} OWNER BOT`, rowId: ".owner", description: "Menampilkan List owner SmileyBot"},
 	    {title: `📔 ${pmenus} SCRIPT BOT`, rowId: ".sc", description: `Source Code ${namebot}`},
+	{title: `📮 ${pmenus} RULES BOT`, rowId: ".rules", description: `Peraturan menggunakan ${namebot}`},
 	]
     },{
 	title: `${htki} SUPPORT ${htka}`,
 	rows: [
-	    {title: `🔖 ${pmenus} SEWA`, rowId: ".sewa", description: "Menampilkan list harga sewa BOT"},
-	    {title: `🌟 ${pmenus} BUY PREMIUM`, rowId: ".premium", description: "Menampilkan list harga premium"},
-	    {title: `💹 ${pmenus} DONASI`, rowId: ".donasi", description: 'Support BOT agar lebih fast respon'},
+	    {title: `🔖 ${pmenus} SEWA`, rowId: ".sewa", description: "Menampilkan list harga sewa Bot"},
+	    {title: `🌟 ${pmenus} BUY PREMIUM`, rowId: ".premium", description: "Menampilkan list harga upgrade premium"},
+	    {title: `💰 ${pmenus} DONASI`, rowId: ".donasi", description: 'Support Bot agar on 1 Minggu non stop'},
+	{title: `✨ ${pmenus} RATE`, rowId: ".rate", description: 'Support Bot agar Semangat update'},
+	{title: `🌐 ${pmenus} WEBSITE`, rowId: ".website", description: 'Jangan lupa mampir'},
 	]
 	},{
-	title: `${htki} MENU ${htka}`,
+	title: `${htki} MENU FANGZ BOT${htka}`,
 	rows: [
-	    {title: `💬 ${pmenus} All`, rowId: ".? all", description: "Menampilkan Semua command BOT"},
-	    {title: `🌱 ${pmenus} Rpg`, rowId: ".? rpg", description: "Game Epic Rpg!"},
-	{title: `✨ ${pmenus} Exp`, rowId: ".? xp", description: "Ayo tingkatkan pangkat mu!"},
-	{title: `🎮 ${pmenus} Game`, rowId: ".? game", description: "Gamenya seru seru lho >-<"},
-	{title: `🧩 ${pmenus} Fun`, rowId: ".? fun", description: "Fitur yang aman untuk keluarga"},
-	{title: `🐚 ${pmenus} Kerang`, rowId: ".? kerangajaib", description: "Tanyakan pada ketua club"},
-	{title: `📑 ${pmenus} Quotes`, rowId: ".? quotes", description: "Random Inspirasi"},
-	{title: `⛩️ ${pmenus} Anime`, rowId: ".? anime", description: "Kamu wibu ya bang?"},
-	{title: `🔞 ${pmenus} Nsfw`, rowId: ".? nsfw", description: "Tch, dasar sagne"},
-	{title: `🌟 ${pmenus} Premium`, rowId: ".? premium", description: "Only premium Users"},
-	{title: `🎭 ${pmenus} Anonymous Chats`, rowId: ".? anonymous", description: "Bicara dengan orang tidak dikenal"},
-	{title: `🌎 ${pmenus} Internet`, rowId: ".? internet", description: "Cari sesuatu diBOT"},
-	{title: `📩 ${pmenus} Downloaders`, rowId: ".? downloader", description: "Download sesuatu diBOT"},
-	{title: `🎨 ${pmenus} Stikers`, rowId: ".? stiker", description: "Buat Sticker diBOT"},
-	{title: `✏️ ${pmenus} Nulis`, rowId: ".? nulis", description: "Nulis kok males kak?"},
-	{title: `🎧 ${pmenus} Audio`, rowId: ".? audio", description: "Ubah Audio dengan Filter"},
-	{title: `🏢 ${pmenus} Group`, rowId: ".? group", description: "Only Groups"},
-	{title: `👑 ${pmenus} Admin`, rowId: ".? admin", description: "Only Admin Group"},
-	{title: `🗂️ ${pmenus} Database`, rowId: ".? database", description: "Simpan sesuatu diBOT"},
-	{title: `🛠️ ${pmenus} Tools`, rowId: ".? tools", description: "Mungkin tools ini bisa membantu?"},
-	{title: `ℹ️ ${pmenus} Info`, rowId: ".? info", description: "Info info BOT"},
-	{title: `👩‍💻 ${pmenus} Owner`, rowId: ".? owner", description: "Owner Only!"},
-	{title: `❓ ${pmenus} No Category`, rowId: ".? nocategory", description: "Fitur tanpa kategory!"},
+	    {title: `『💬』 ${pmenus} All`, rowId: ".? all", description: "Menampilkan Semua command BOT"},
+	    {title: `『🌱』 ${pmenus} Rpg`, rowId: ".? rpg", description: "Game Epic Rpg!"},
+	{title: `『✨』 ${pmenus} Exp`, rowId: ".? xp", description: "Ayo tingkatkan pangkat mu!"},
+	{title: `『🎮』 ${pmenus} Game`, rowId: ".? game", description: "Gamenya seru seru lho >-<"},
+	{title: `『🧩』 ${pmenus} Fun`, rowId: ".? fun", description: "Fitur yang aman untuk keluarga"},
+	{title: `『🐚』 ${pmenus} Kerang`, rowId: ".? kerangajaib", description: "Tanyakan pada ketua club"},
+	{title: `『📑』 ${pmenus} Quotes`, rowId: ".? quotes", description: "Random Inspirasi"},
+	{title: `『⛩️』 ${pmenus} Anime`, rowId: ".? anime", description: "Kamu wibu ya bang?"},
+	{title: `『🔞』 ${pmenus} Nsfw`, rowId: ".? nsfw", description: "Tch, dasar sagne"},
+	{title: `『🌟』 ${pmenus} Premium`, rowId: ".? premium", description: "Only premium Users"},
+	{title: `『🎭』 ${pmenus} Anonymous Chats`, rowId: ".? anonymous", description: "Bicara dengan orang tidak dikenal"},
+	{title: `『🌐』 ${pmenus} Internet`, rowId: ".? internet", description: "Cari sesuatu diBOT"},
+	{title: `『📩』 ${pmenus} Downloaders`, rowId: ".? downloader", description: "Download sesuatu diBOT"},
+	{title: `『🎨』 ${pmenus} Stikers`, rowId: ".? stiker", description: "Buat Sticker diBOT"},
+	{title: `『✏️』 ${pmenus} Nulis`, rowId: ".? nulis", description: "Nulis kok males kak?"},
+	{title: `『🎧』 ${pmenus} Audio`, rowId: ".? audio", description: "Ubah Audio dengan Filter"},
+	{title: `『🏢』 ${pmenus} Group`, rowId: ".? group", description: "Only Groups"},
+	{title: `『👑』 ${pmenus} Admin`, rowId: ".? admin", description: "Only Admin Group"},
+	{title: `『🗂️』 ${pmenus} Database`, rowId: ".? database", description: "Simpan sesuatu diBOT"},
+	{title: `『🛠️』 ${pmenus} Tools`, rowId: ".? tools", description: "Mungkin tools ini bisa membantu?"},
+	{title: `『ℹ️』 ${pmenus} Info`, rowId: ".? info", description: "Info info BOT"},
+	{title: `『👩‍💻』 ${pmenus} Owner`, rowId: ".? owner", description: "Owner Only!"},
+	{title: `『🖼️』 ${pmenus} Maker`, rowId: ".? maker", description: "Fitur Maker menu"},
 	]
   },
 ]
 
 let usrs = db.data.users[m.sender]
-let tek = `*${ucapan()} ${conn.getName(m.sender)}*
-*U S E R  I N F O*
-• *ɴᴀᴍᴇ:* ${usrs.registered ? usrs.name : conn.getName(m.sender)}
-• *ᴛᴀɢs:* @${m.sender.split`@`[0]}
-• *sᴛᴀᴛᴜs:* ${m.sender.split`@`[0] == nomorown ? 'Developer' : (usrs.premiumTime >= 1 ? 'Premium User' : 'Free User')}
-• *ᴘʀᴇᴍɪᴜᴍ:* ${usrs.premiumTime > 1 ? 'Yes': 'No'}
+let tek = `*❅${ucapan()} ${conn.getName(m.sender)}*
 
-*S T A T U S  I N F O*
-• *ᴜᴘᴛɪᴍᴇ:* ${mpt}
-• *ᴛɪᴍᴇ:* ${moment.tz('Asia/Makassar').format('HH')} H  ${moment.tz('Asia/Makassar').format('mm')} M  ${moment.tz('Asia/Makassar').format('ss')} S
-• *ᴜsᴇʀs:* ${Object.keys(global.db.data.users).length}
-• *ʟɪᴍɪᴛ:* ${usrs.limit}
-• *ʟᴇᴠᴇʟ:* ${usrs.level}
-• *ʀᴏʟᴇ:* ${usrs.role}${usrs.premiumTime > 1 ? `
-• *ᴇxᴘɪʀᴇᴅ ᴘʀᴇᴍɪᴜᴍ:*
+────━☢ *D A S H B O A R D* ☢┅━────
+
+「 *I N F O  C M D* 」
+*Ⓟ* = Premium
+*Ⓛ* = Limit
+
+         「 *Ʋser Ɩnfσrmαtισn* 」
+🌸• *ɴᴀᴍᴇ:* ${usrs.registered ? usrs.name : conn.getName(m.sender)}
+🌸• *ᴛᴀɢs:* @${m.sender.split`@`[0]}
+🌸• *sᴛᴀᴛᴜs:* ${m.sender.split`@`[0] == nomorown ? 'Developer' : (usrs.premiumTime >= 1 ? 'Premium User' : 'Free User')}
+🌸• *ᴘʀᴇᴍɪᴜᴍ:* ${usrs.premiumTime > 1 ? 'Yes': 'No'}
+
+
+
+         「 *Bσt Ɩnfσrmαtισn* 」
+🎐• *ᴜᴘᴛɪᴍᴇ:* ${mpt}
+🎐• *ᴛɪᴍᴇ:* ${moment.tz('Asia/Makassar').format('HH')} : ${moment.tz('Asia/Makassar').format('mm')} : ${moment.tz('Asia/Makassar').format('ss')}
+🎐• *ᴜsᴇʀs:* ${Object.keys(global.db.data.users).length}
+🎐• *ʟɪᴍɪᴛ:* ${usrs.limit}
+🎐• *ʟᴇᴠᴇʟ:* ${usrs.level}
+🎐• *ʀᴏʟᴇ:* ${usrs.role}${usrs.premiumTime > 1 ? `
+🎐• *ᴇxᴘɪʀᴇᴅ ᴘʀᴇᴍɪᴜᴍ:*
 ${clockStringP(usrs.premiumTime - new Date())}` : ''}
+
+
+               「*SmileyBotz*」
 `
 const listMessage = {
   text: tek,
-  footer: '📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner',
+  footer: 'Recode by Dv~\n\n⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕',
   mentions: await conn.parseMention(tek),
   title: `${htki} *LIST MENU* ${htka}`,
-  buttonText: `CLICK HERE ⎙`,
+  buttonText: `MENU SENYUM:)`,
   sections
 }
   if (teks == '404') {
@@ -429,7 +432,7 @@ const listMessage = {
   "jpegThumbnail": fs.readFileSync('./thumbnail.jpg'),
     },
   "title": `${ucapan()}`,
-  "description": '𝗧 𝗜 𝗠 𝗘 : ' + wktuwib,
+  "description": '𝗧𝗜𝗠𝗘 : ' + wktuwita,
   "currencyCode": "US",
   "priceAmount1000": "100",
   "retailerId": wm,
@@ -489,13 +492,19 @@ const listMessage = {
     const message = {
             document: { url: thumbdoc },
             jpegThumbnail: await (await fetch(thumbdoc)).buffer(),
-            fileName: '𝗧 𝗜 𝗠 𝗘 : ' + wktuwib,
+            fileName: '𝗧𝗜𝗠𝗘 : ' + wktuwita,
             mimetype: td,
             fileLength: fsizedoc,
             pageCount: fpagedoc,
             caption: text,
-            footer: titlebot + '\n⚡ Supported By FR Team',
+            footer: titlebot + '\n⚡ Supported By Senyum TEAM',
             templateButtons: [
+                {
+                    urlButton: {
+                        displayText: `${namebot}`,
+                        url: 'https://github.com/devkgw'
+                    }
+                },
                 {
                     urlButton: {
                         displayText: 'Group Official',
@@ -506,6 +515,18 @@ const listMessage = {
                     quickReplyButton: {
                         displayText: 'Owner',
                         id: '.owner'
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Speed',
+                        id: '.ping'
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Donasi',
+                        id: '.donasi'
                     }
                 },
             ]
