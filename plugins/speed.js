@@ -1,8 +1,6 @@
 import { cpus as _cpus, totalmem, freemem } from 'os'
 import util from 'util'
 import os from 'os'
-import osu from 'node-os-utils'
-import fetch from 'node-fetch'
 import { performance } from 'perf_hooks'
 import { sizeFormatter } from 'human-readable'
 let format = sizeFormatter({
@@ -48,106 +46,41 @@ let handler = async (m, { conn, isRowner}) => {
       irq: 0
     }
   })
-  let NotDetect = 'Not Detect'
-        let cpux = osu.cpu
-        let cpuCore = cpux.count()
-        let drive = osu.drive
-        let mem = osu.mem
-        let netstat = osu.netstat
-        let HostN = osu.os.hostname()
-        let OS = osu.os.platform()
-        let ipx = osu.os.ip()
-        let cpuModel = cpux.model()
-        let cpuPer
-        let p1 = cpux.usage().then(cpuPercentage => {
-            cpuPer = cpuPercentage
-        }).catch(() => {
-            cpuPer = NotDetect
-        })
-        let driveTotal, driveUsed, drivePer
-        let p2 = drive.info().then(info => {
-                driveTotal = (info.totalGb + ' GB'),
-                driveUsed = info.usedGb,
-                drivePer = (info.usedPercentage + '%')
-        }).catch(() => {
-                driveTotal = NotDetect,
-                driveUsed = NotDetect,
-                drivePer = NotDetect
-        })
-        let ramTotal, ramUsed
-        let p3 = mem.info().then(info => {
-                ramTotal = info.totalMemMb,
-                ramUsed = info.usedMemMb
-        }).catch(() => {
-                ramTotal = NotDetect,
-                ramUsed = NotDetect
-        })
-        let netsIn, netsOut
-        let p4 = netstat.inOut().then(info => {
-                netsIn = (info.total.inputMb + ' MB'),       
-                netsOut = (info.total.outputMb + ' MB')
-        }).catch(() => {
-                netsIn = NotDetect,
-                netsOut = NotDetect
-        })
-        await Promise.all([p1, p2, p3, p4])        
-        let _ramTotal = (ramTotal + ' MB')
-        let cek = await(await fetch("https://api.myip.com")).json()
-        let ip = cek.ip
-        let cr = cek.country
-        let cc = cek.cc
-        let d = new Date(new Date + 3600000)
-    let locale = `${cc}`
-    let weeks = d.toLocaleDateString(locale, { weekday: 'long' })
-    let dates = d.toLocaleDateString(locale, {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    })
-        let times = d.toLocaleTimeString(locale, {
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric'
-    })
-        
   let old = performance.now()
-  await m.reply(`*ᴛ ᴇ s ᴛ ɪ ɴ ɢ . . .*`)
+  await m.reply(`${htjava} *T e s t i n g. . .*`)
   let neww = performance.now()
   let speed = neww - old
-  await conn.reply(m.chat,`- *ᴘ ɪ ɴ ɢ* -
-${Math.round(neww - old)}ms
+  await conn.sendHydrated(m.chat,`
+${htjava} *P I N G*
 ${speed}ms
 
-- *ʀ ᴜ ɴ ᴛ ɪ ᴍ ᴇ* -
+${htjava} *R U N T I M E* 
 ${muptime}
 ${readMore}
-- *ᴄ ʜ ᴀ ᴛ s* -
+${htki} *CHATS* ${htka}
 • *${groupsIn.length}* Group Chats
 • *${groupsIn.length}* Groups Joined
 • *${groupsIn.length - groupsIn.length}* Groups Left
 • *${chats.length - groupsIn.length}* Personal Chats
 • *${chats.length}* Total Chats
 
-- *s ᴇ ʀ ᴠ ᴇ ʀ* -
-*🛑 Rᴀᴍ:* ${ramUsed} / ${_ramTotal}(${/[0-9.+/]/g.test(ramUsed) &&  /[0-9.+/]/g.test(ramTotal) ? Math.round(100 * (ramUsed / ramTotal)) + '%' : NotDetect})
-*🔵 FʀᴇᴇRᴀᴍ:* ${format(freemem())}
 
-*🔭 ᴘʟᴀᴛғᴏʀᴍ:* ${os.platform()}
-*🧿 sᴇʀᴠᴇʀ:* ${os.hostname()}
-*💻 ᴏs:* ${OS}
-*📍 ɪᴘ:* ${ip}
-*🌎 ᴄᴏᴜɴᴛʀʏ:* ${cr}
-*💬 ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ:* ${cc}
-*📡 ᴄᴘᴜ ᴍᴏᴅᴇʟ:* ${cpuModel}
-*🔮 ᴄᴘᴜ ᴄᴏʀᴇ:* ${cpuCore} Core
-*🎛️ ᴄᴘᴜ:* ${cpuPer}%
-*⏰ ᴛɪᴍᴇ sᴇʀᴠᴇʀ:* ${times}
+${htki} *SERVER* ${htka}
+*⮕ RAM:* ${format(totalmem() - freemem())} / ${format(totalmem())}
+*⮕ FreeRAM:* ${format(freemem())}
 
+*💻 Platform:* ${os.platform()}
+*🧿 Server:* ${os.hostname()}
 ${readMore}
-*${htjava} ɴᴏᴅᴇJS ᴍᴇᴍᴏʀʏ ᴜsᴀɢᴇ*
+*${htjava} NodeJS Memory Usage*
 ${'```' + Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v => v.length)), ' ')}: ${format(used[key])}`).join('\n') + '```'}
 
-`,m)
+${cpus[0] ? `_Total CPU Usage_
+${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
+
+_CPU Core(s) Usage (${cpus.length} Core CPU)_
+${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}
+`,botdate, null, sgc, '🌎 GROUP OFFICIAL', null,null, [[null,null],[null,null],[null,null]], m)
 }
 handler.help = ['ping', 'speed']
 handler.tags = ['info', 'tools']

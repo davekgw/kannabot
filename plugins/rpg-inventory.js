@@ -8,8 +8,7 @@ const inventory = {
     health: true,
     money: true,
     exp: true,
-    limit: true,
-    level: true,
+    joinlimit: true,
   },
   items: {
     potion: true,
@@ -109,46 +108,38 @@ const inventory = {
 }
 let handler = async (m, { conn }) => {
   let user = global.db.data.users[m.sender]
-  const tools = Object.keys(inventory.tools).map(v => user[v] && `${global.rpg.emoticon(v)} ${v}: ${typeof inventory.tools[v] === 'object' ? inventory.tools[v][user[v]?.toString()] : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
-  const items = Object.keys(inventory.items).map(v => user[v] && `${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n').trim()
-  const dura = Object.keys(inventory.durabi).map(v => user[v] && `${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n').trim()
-  const crates = Object.keys(inventory.crates).map(v => user[v] && `${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n').trim()
-  const pets = Object.keys(inventory.pets).map(v => user[v] && `${global.rpg.emoticon(v)} ${v}: ${user[v] >= inventory.pets[v] ? 'Max Levels' : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
-  const cooldowns = Object.entries(inventory.cooldowns).map(([cd, { name, time }]) => cd in user && `*• ${name}*: ${new Date() - user[cd] >= time ? '✅' : '❌'}`).filter(v => v).join('\n').trim()
+  const tools = Object.keys(inventory.tools).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${typeof inventory.tools[v] === 'object' ? inventory.tools[v][user[v]?.toString()] : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
+  const items = Object.keys(inventory.items).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v]}`).filter(v => v).join('\n').trim()
+  const dura = Object.keys(inventory.durabi).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v]}`).filter(v => v).join('\n').trim()
+  const crates = Object.keys(inventory.crates).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v]}`).filter(v => v).join('\n').trim()
+  const pets = Object.keys(inventory.pets).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v] >= inventory.pets[v] ? 'Max Levels' : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
+  const cooldowns = Object.entries(inventory.cooldowns).map(([cd, { name, time }]) => cd in user && `*✧ ${name}*: ${new Date() - user[cd] >= time ? '✅' : '❌'}`).filter(v => v).join('\n').trim()
   const caption = `
-🧑🏻‍🏫  ɴᴀᴍᴇ: ${conn.getName(m.sender)}
-${Object.keys(inventory.others).map(v => user[v] && `➔ ${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n')}${tools ? `
-➔ 🎖️ role: ${user.role}
+🧑🏻‍🏫 ᴜsᴇʀ: *${conn.getName(m.sender)}*
+${Object.keys(inventory.others).map(v => user[v] && `⮕ ${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n')}${tools ? `
+🔖 ᴛᴏᴏʟs :
+${tools}` : ''}${items ? `
 
-*───── ᴛᴏᴏʟs ─────*
-${tools}` : ''}${dura ? `
+🔖 ɪᴛᴇᴍs :
+${items}` : ''}${crates ? `
 
-${dura}` : ''}${items ? `
+🔖 ᴄʀᴀᴛᴇs :
+${crates}` : ''}${pets ? `
 
+🔖 ᴩᴇᴛs :
+${pets}` : ''}${cooldowns ? `
 
-*───── ɪᴛᴇᴍs ─────*
-${items}
-➔ ᴛᴏᴛᴀʟ ɪᴛᴇᴍs: ${Object.keys(inventory.items).map(v => user[v]).reduce((a, b) => a + b, 0)} Items` : ''}${crates ? `
-
-
-*───── ᴄʀᴀᴛᴇs ─────*
-${crates}
-➔ ᴛᴏᴛᴀʟ ᴄʀᴀᴛᴇs: ${Object.keys(inventory.crates).map(v => user[v]).reduce((a, b) => a + b, 0)} Crates` : ''}${pets || user.petFood ? `
-
-
-*───── ᴘᴇᴛs ─────*
-${pets ? pets + '\n' : ''}${user.petFood ? '🍖 ᴘᴇᴛғᴏᴏᴅ: ' + user.petFood : ''}` : ''}${cooldowns ? `
-
-*───── ᴄᴏᴏʟᴅᴏᴡɴ ─────*
+♻️ ᴄᴏʟʟᴇᴄᴛ ʀᴇᴡᴀʀᴅs:
 ${cooldowns}` : ''}
-*• dungeon:* ${user.lastdungeon == 0 ? '✅': '❌'}
-*• mining:* ${user.lastmining == 0 ? '✅': '❌'}
+*✧ dungeon: ${user.lastdungeon == 0 ? '✅': '❌'}*
+*✧ mining: ${user.lastmining == 0 ? '✅': '❌'}*
 `.trim()
-  conn.sendButton(m.chat, `*${htki} ɪɴᴠᴇɴᴛᴏʀʏ ${htka}*`, caption, null, [[`${user.health < 60 ? 'ʜᴇᴀʟ': 'ᴀᴅᴠᴇɴᴛᴜʀᴇ'}`,`${user.health < 60 ? '.heal': '.adventure'}`],['ᴘʀᴏғɪʟᴇ','.pp']],m)
+conn.sendButton(m.chat, '*–––––『 INVENTORY 』–––––*', caption, './media/inventory.jpg', [
+[`ᴛʀᴀɴsғᴇʀ`, `.transfer`],
+[`ᴀᴅᴠᴇɴᴛᴜʀᴇ`, `.adventure`]
+], m, {asLocation: true})
 }
 handler.help = ['inventory', 'inv']
 handler.tags = ['rpg']
 handler.command = /^(inv(entory)?|bal(ance)?|money|e?xp)$/i
-
-handler.register = true
 export default handler

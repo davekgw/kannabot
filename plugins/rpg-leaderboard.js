@@ -11,6 +11,7 @@ const leaderboards = [
   'trash',
   'potion',
   'petFood',
+  'joinlimit',
   'wood',
   'rock',
   'string',
@@ -26,32 +27,39 @@ let handler = async (m, { conn, args, participants, usedPrefix, command }) => {
   })
   let leaderboard = leaderboards.filter(v => v && users.filter(user => user && user[v]).length)
   let type = (args[0] || '').toLowerCase()
-  const getPage = (item) => Math.ceil((users.filter(user => user && user[item]).length) / 20)
-  let wrong = `
-Use format *${usedPrefix}${command} [type] [page]*
-example *${usedPrefix}${command} money 1*
-
-📍 Type list
+  const getPage = (item) => Math.ceil((users.filter(user => user && user[item]).length) / 0)
+  let wrong = `🔖 ᴛʏᴩᴇ ʟɪsᴛ :
 ${leaderboard.map(v => `
-${rpg.emoticon(v)}${v}
+⮕ ${rpg.emoticon(v)} - ${v}
 `.trim()).join('\n')}
-`.trim()
-  if (!leaderboard.includes(type)) return m.reply(wrong)
+––––––––––––––––––––––––
+💁🏻‍♂ ᴛɪᴩ :
+⮕ ᴛᴏ ᴠɪᴇᴡ ᴅɪғғᴇʀᴇɴᴛ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ:
+${usedPrefix}${command} [type]
+★ ᴇxᴀᴍᴩʟᴇ:
+${usedPrefix}${command} legendary`.trim()
+  if (!leaderboard.includes(type)) 
+  return conn.sendButton(m.chat,'*––––『 LEADERBOARD 』––––*', wrong, './media/lb.jpg', [
+[`✉️ ᴇxᴩ`, `${usedPrefix}lb exp`],
+[`💰 ᴍᴏɴᴇʏ`, `${usedPrefix}lb money`]
+], m, {asLocation: true})
   let page = isNumber(args[1]) ? Math.min(Math.max(parseInt(args[1]), 0), getPage(type)) : 0
   let sortedItem = users.map(toNumber(type)).sort(sort(type))
   let userItem = sortedItem.map(enumGetKey)
   // let len = args[0] && args[0].length > 0 ? Math.min(100, Math.max(parseInt(args[0]), 5)) : Math.min(5, sortedExp.length)
   let text = `
-▣› *${rpg.emoticon(type)}${type} Leaderboard* ‹▣
-*📑 Page:* ${page} of ${getPage(type)}
-*🎖️ You:* *${userItem.indexOf(m.sender) + 1}* of *${userItem.length}*
+🏆 ʀᴀɴᴋ: ${userItem.indexOf(m.sender) + 1} ᴏᴜᴛ ᴏғ ${userItem.length}
 
-${sortedItem.slice(page * 20, page * 20 + 20).map((user, i) => '▣\n' + `│ ${i + 1}〉 ${participants.some(p => areJidsSameUser(user.jid, p.id)) ? `(${conn.getName(user.jid)}) wa.me/` : '@'}${user.jid.split`@`[0]}\n│▸ ${user[type]} ${type}${rpg.emoticon(type)}`).join`\n┗────────────·····\n\n`}
-┗────────────·····
+                    *• ${rpg.emoticon(type)} ${type} •*
+
+${sortedItem.slice(page * 0, page * 5 + 5).map((user, i) => `${i + 1}.*﹙${user[type]}﹚*- ${participants.some(p => areJidsSameUser(user.jid, p.id)) ? `${conn.getName(user.jid)} \nwa.me/` : 'ғʀᴏᴍ ᴏᴛʜᴇʀ ɢʀᴏᴜᴩ\n @'}${user.jid.split`@`[0]}`).join`\n\n`}
 `.trim()
-  return m.reply(text, null, {
-    mentions: [...userItem.slice(page * 20, page * 20 + 20)].filter(v => !participants.some(p => areJidsSameUser(v, p.id)))
-  })
+  return conn.sendButton(m.chat, `*–『 GLOBAL LEADERBOARD 』–*`, text, './media/gblb.jpg', [
+[`ᴛᴏᴩ 50`, `${usedPrefix}lb ${type} 9`],
+[`ᴛᴏᴩ 100`, `${usedPrefix}lb ${type} 19`]
+], m, {
+    mentions: [...userItem.slice(page * 0, page * 5 + 5)].filter(v => !participants.some(p => areJidsSameUser(v, p.id))),
+    asLocation: true})
 }
 handler.help = ['leaderboard [jumlah user]', 'lb [jumlah user]']
 handler.tags = ['xp']
